@@ -1,0 +1,34 @@
+{
+  "name": "jade-bootstrap",
+  "homepage": "https://github.com/rajasegar/JADE-Bootstrap",
+  "authors": [
+    "Rajasegar <rajasegar.c@gmail.com>"
+  ],
+  "description": "Bootstrap framework written completely using mixins in JADE",
+  "main": "bootstrap.jade",
+  "keywords": [
+    "jade",
+    "bootstrap",
+    "frontend",
+    "ui",
+    "framework"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "19395aaa4d",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "19395aaa4dc022ecbecd78896de26008a1569cdb"
+  },
+  "_source": "git://github.com/rajasegar/JADE-Bootstrap.git",
+  "_target": "*",
+  "_originalSource": "jade-bootstrap",
+  "_direct": true
+}

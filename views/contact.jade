@@ -1,0 +1,24 @@
+doctype html
+html
+	head
+		title #{title}
+		link(href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet")
+		link(href="stylesheets/animate.css" rel="stylesheet")
+		link(href="stylesheets/style.css" rel="stylesheet")
+		link(href='https://fonts.googleapis.com/css?family=Lato|Playfair+Display:400,700' rel='stylesheet' type='text/css')
+	body
+		.container
+			h1 Contact #{title}
+			form(method="post" contact="/contact/accept")
+				.form-group
+					input(type='text', name="name", placeholder='name')
+				.form-group
+					input(type='email', name="email", placeholder='email')
+				.form-group
+					input(type='textarea', name='message', placeholder='message')
+				.form-group
+					input(type='submit', value='contact me')
+
+	script(src='../vendor/jquery/dist/jquery.js')
+	script(src='../vendor/bootstrap/dist/js/bootstrap.js')
+	script(src='../javascripts/wut.js')

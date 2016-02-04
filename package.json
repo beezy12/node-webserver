@@ -1,0 +1,32 @@
+{
+  "name": "node-webserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "serve": "nodemon server.js",
+    "bower": "bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beezy12/node-webserver.git"
+  },
+  "author": "Brian Stumbaugh <brian.stumbaugh@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beezy12/node-webserver/issues"
+  },
+  "homepage": "https://github.com/beezy12/node-webserver#readme",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "jade": "^1.11.0",
+    "multer": "^1.1.0",
+    "node-sass-middleware": "^0.9.7"
+  },
+  "devDependencies": {
+    "bower": "^1.7.7"
+  }
+}

@@ -1,0 +1,28 @@
+body {
+  background-color: #00FF7F;
+  font-family: "Playfair Display", Times New Roman;
+  font-size: 5rem;
+  border-top: 25px solid black; }
+
+.hi {
+  font-size: 16rem;
+  color: #f2f2f2; }
+
+.enter {
+  margin-top: 40px; }
+
+.butt {
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-left: 210px;
+  background-color: black;
+  color: white; }
+
+input[type="text"], input[type="email"], input[type="submit"], input[type='textarea'], input[type="file"] {
+  background-color: black;
+  color: white; }
+
+.photo {
+  font-size: 3rem; }
+
+/*# sourceMappingURL=style.css.map */

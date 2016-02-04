@@ -1,0 +1,41 @@
+doctype html
+html
+	head
+		title= title
+		link(href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet")
+		link(href="stylesheets/animate.css" rel="stylesheet")
+		link(href="stylesheets/style.css" rel="stylesheet")
+		link(href='https://fonts.googleapis.com/css?family=Lato|Playfair+Display:400,700' rel='stylesheet' type='text/css')
+	body
+		//- h1 Velcome to #{title}
+		//- p The date is #{date.toLocaleDateString('en-us')}
+		//- p my name is #{name} and my age is #{age}
+
+		.container-fluid
+			.row
+				.col-md-4
+					p.hi.animated.bounceInRight hello.
+
+			.row
+				.col-md-12.col-md-offset-5
+					p.animated.hinge.intro do you like broken shit?
+
+			.row
+				.col-md-5.col-md-offset-1
+					p.deal if so, I've got a calendar with your name written all over it.
+
+				.col-md-4
+					.enter
+						input(type="text" id="firstUrl" placeholder="enter month number")
+						input(type="text" id="secondUrl" placeholder="enter year")
+						a(class="btn btn-default btn-lg butt", href="cal", id="baseUrl") and click here
+
+
+
+
+	script(src='../vendor/jquery/dist/jquery.js')
+	script(src='../vendor/bootstrap/dist/js/bootstrap.js')
+	script(src='../javascripts/wut.js')
+
+
+
