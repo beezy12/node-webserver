@@ -14,11 +14,34 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 // this gets a files object, that tells where to put our pictures when we upload
-const upload = require('multer')(
-    {
-        dest: 'tmp/baby',
+// const upload = require('multer')(
+//     {
+//         dest: 'tmp/baby',
 
-    });
+//     });
+
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'tmp/uploads')
+    },
+    filename: function (req, file, cb) {
+        console.log('--------->', file)
+        cb(null, Date.now() + file.originalname)
+        // cb(null, Date.now() + path.extname(file.originalname))
+        console.log('=====>', path.extname)
+
+  }
+})
+
+const upload = multer({ storage: storage })
+
+
+
+
+
+
 
 // set creates an express global variable
 app.set('view engine', 'jade');
@@ -89,6 +112,7 @@ app.get('/sendphoto', (req, res) => {
 // upload.single('image')....'image' comes from the jade template name=""
 // so single(fieldname)
 // single could be .array or .fields or .any
+// .post comes from method="post" in the jade file
 app.post('/sendphoto', upload.single('image'), (req, res) => {
     console.log(req.body, req.file);
     res.send('<h1>we thank ye</h1>');

@@ -10,11 +10,18 @@ html
 		.container
 			h1 gives me some foto
 
-			form(method='post', enctype='multipart/form-data')
-				input(type='file', name='image', accept='image/jpeg')
-				input(type='submit', value='gimme foto')
-			//- button.btn.btn-default.btn-lg.butt booty
+			.photo
+				form(method='post', enctype='multipart/form-data')
+					input(type='file', name='image', accept='image/jpeg')
+					input(type='submit', value='gimme foto')
+				//- button.btn.btn-default.btn-lg.butt booty
 
 	script(src='../vendor/jquery/dist/jquery.js')
 	script(src='../vendor/bootstrap/dist/js/bootstrap.js')
 	script(src='../javascripts/wut.js')
+
+
+
+
+
+
