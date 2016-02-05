@@ -20,9 +20,28 @@ body {
 
 input[type="text"], input[type="email"], input[type="submit"], input[type='textarea'], input[type="file"] {
   background-color: black;
-  color: white; }
+  color: white;
+  border-radius: 5px; }
 
 .photo {
+  padding-top: 30px;
   font-size: 3rem; }
+
+.cam {
+  margin-left: 150px; }
+
+.foto {
+  margin-top: 100px; }
+
+.move {
+  margin-left: 40px;
+  margin-bottom: 50px; }
+
+.sendFoto {
+  font-size: 3rem;
+  margin-left: 210px; }
+
+.glyphicon.glyphicon-camera {
+  font-size: 9rem; }
 
 /*# sourceMappingURL=style.css.map */

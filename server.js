@@ -1,6 +1,5 @@
-/******************************************* EXPRESS **************************************************/
+/******************************************* EXPRESS *********************************************/
 
-// using EXPRESS
 'use strict';
 
 
@@ -9,23 +8,24 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const path = require('path');
+const imgur = require('imgur');
+const request = require('request');
+const multer = require('multer');
+const _ = require('lodash');
+const fs = require('fs');
+const cheerio = require('cheerio');
 
 // this will help you parse the form data into an object
 const bodyParser = require('body-parser');
 
-// this gets a files object, that tells where to put our pictures when we upload
-// const upload = require('multer')(
-//     {
-//         dest: 'tmp/baby',
-
-//     });
-
-const multer = require('multer');
+// this parses the form data into an object
+app.use(bodyParser.urlencoded({extended: false}));
+// will parse into a json
+app.use(bodyParser.json());
 
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'tmp/uploads')
-    },
+    destination: 'tmp/uploads',
+
     filename: function (req, file, cb) {
         console.log('--------->', file)
         cb(null, Date.now() + file.originalname)
@@ -39,7 +39,82 @@ const upload = multer({ storage: storage })
 
 
 
+// json
+app.get('/api', (req, res) => {
+    res.header('access-control-allow-origin', '*');
+    res.send({
+        hello: 'pal'
+    })
+});
 
+
+app.post('/api', (req, res) => {
+
+    const obj = _.mapValues(req.body, val => val.toUpperCase());
+    res.send(obj);
+
+    // console.log(req.body)
+    // res.send({yo: 'buddy', hey: 'guy'});
+
+})
+
+
+app.get('/api/weather', (req, res) => {
+    const url = 'https://api.forecast.io/forecast/409982af42c889e99a89fb0f56fa8d13/36.162664,-86.781602';
+    request.get(url, (err, response, body) => {
+        if(err) throw err;
+
+        res.header('access-control-allow-origin', '*');
+        res.send(JSON.parse(body));
+    });
+});
+
+
+app.get('api/reddit', (req, res) => {
+    const url = 'http://reddit.com';
+
+
+
+})
+
+
+
+app.get('/api/news', (req, res) => {
+    const url = 'http://cnn.com';
+
+    request.get(url, (err, response, html) => {
+        if(err) throw err;
+
+    const news = [];
+    const $ = cheerio.load(html);
+
+
+    const $bannerText = $('.banner-text');
+
+    // this is called caching the selector. very important. set the $bannerText variable above
+    news.push({
+        title: $bannerText.text(),
+        url: $bannerText.closest('a').attr('href')
+    });
+
+    // news.push({
+    //     title: $('.banner-text').text(),
+    //     url: $('.banner-text').closest('a').attr('href')
+    // });
+
+
+    // eq makes it into a jquery object, so we can use .text and .find
+    _.range(1, 12).forEach(i => {
+        news.push({
+            title: $('.cd__headline').eq(i).text(),
+            url: $('.cd__headline').eq(i).find('a').attr('href')
+        })
+    });
+
+    res.send(news);
+
+    });
+});
 
 
 
@@ -51,8 +126,7 @@ app.set('view engine', 'jade');
 app.locals.title = 'Super Neato Land'
 
 
-// this parses the form data into an object
-//app.use(bodyParser.urlencoded({extended: false}));
+
 
 
 
@@ -115,6 +189,26 @@ app.get('/sendphoto', (req, res) => {
 // .post comes from method="post" in the jade file
 app.post('/sendphoto', upload.single('image'), (req, res) => {
     console.log(req.body, req.file);
+    console.log('path heeeeeeeer', req.file.path);
+
+    // got this function from the npm imgur docs
+    //A single image
+    imgur.uploadFile(req.file.path)
+        .then(function (json) {
+            console.log(json);
+            console.log('yo heres your imgur picture link', json.data.link);
+        })
+        .catch(function (err) {
+            console.error(err.message);
+        });
+
+
+
+    fs.unlink(req.file.path, (err) => {
+      if (err) throw err;
+      console.log('successfully deleted' + req.file.path);
+    });
+
     res.send('<h1>we thank ye</h1>');
 })
 

@@ -1,11 +1,6 @@
-doctype html
-html
-	head
-		title= title
-		link(href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet")
-		link(href="stylesheets/animate.css" rel="stylesheet")
-		link(href="stylesheets/style.css" rel="stylesheet")
-		link(href='https://fonts.googleapis.com/css?family=Lato|Playfair+Display:400,700' rel='stylesheet' type='text/css')
+extends ./header.jade
+
+block content
 	body
 		//- h1 Velcome to #{title}
 		//- p The date is #{date.toLocaleDateString('en-us')}
@@ -22,7 +17,7 @@ html
 
 			.row
 				.col-md-5.col-md-offset-1
-					p.deal if so, I've got a calendar with your name written all over it.
+					p.deal if the answer is yes, I've got the perfect calendar for you.
 
 				.col-md-4
 					.enter
