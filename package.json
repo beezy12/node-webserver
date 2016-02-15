@@ -13,6 +13,17 @@
     "type": "git",
     "url": "git+https://github.com/beezy12/node-webserver.git"
   },
+  "eslintConfig": {
+    "env": {
+      "mocha": true,
+      "node": true,
+      "es6": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+      "no-console": 0
+    }
+  },
   "author": "Brian Stumbaugh <brian.stumbaugh@gmail.com>",
   "license": "MIT",
   "bugs": {
@@ -26,6 +37,7 @@
     "imgur": "^0.1.7",
     "jade": "^1.11.0",
     "lodash": "^4.2.1",
+    "mongoose": "^4.4.3",
     "multer": "^1.1.0",
     "node-sass-middleware": "^0.9.7",
     "request": "^2.69.0"
