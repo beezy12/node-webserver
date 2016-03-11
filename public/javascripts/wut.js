@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 
-	console.log('hi there butt');
+
 
 
 	$hi = $('.hi');
@@ -24,7 +24,7 @@ $(document).ready(function() {
 
 	$first = $('#firstUrl');
 	$second = $('#secondUrl');
-	$button = $('.butt');
+	$button = $('.start');
 	$first.hide();
 	$second.hide();
 	$button.hide();
@@ -36,13 +36,13 @@ $(document).ready(function() {
 
 
 	$(function() {
-    $('#baseUrl').click( function() {
-    	var furl = $('#firstUrl').val();
-    	var surl = $('#secondUrl').val();
-		$('#firstUrl').val('');
-		$('#secondUrl').val('');
-        window.location = $(this).attr('href') + '/' + furl + '/' + surl;
-        return false;
+    	$('#baseUrl').click( function() {
+	    	var furl = $('#firstUrl').val();
+	    	var surl = $('#secondUrl').val();
+			$('#firstUrl').val('');
+			$('#secondUrl').val('');
+	        window.location = $(this).attr('href') + '/' + furl + '/' + surl;
+	        return false;
     	});
 
 	});

@@ -31,6 +31,7 @@
     "request": "^2.69.0"
   },
   "devDependencies": {
-    "bower": "^1.7.7"
+    "bower": "^1.7.7",
+    "nodemon": "^1.9.1"
   }
 }

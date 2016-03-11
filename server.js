@@ -6,6 +6,8 @@
 // EXPRESS GIVES YOU AN HTTP AUTOMATICALLY
 const express = require('express');
 const app = express();
+// this will help you parse the form data into an object
+const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 const path = require('path');
 const imgur = require('imgur');
@@ -15,14 +17,15 @@ const _ = require('lodash');
 const fs = require('fs');
 const cheerio = require('cheerio');
 
-// this will help you parse the form data into an object
-const bodyParser = require('body-parser');
 
 // this parses the form data into an object
+// this is the standard setup
 app.use(bodyParser.urlencoded({extended: false}));
 // will parse into a json
 app.use(bodyParser.json());
 
+
+// this uploads a picture to tmp
 const storage = multer.diskStorage({
     destination: 'tmp/uploads',
 
@@ -41,6 +44,7 @@ const upload = multer({ storage: storage })
 
 // json
 app.get('/api', (req, res) => {
+    // the * means for every route
     res.header('access-control-allow-origin', '*');
     res.send({
         hello: 'pal'
@@ -78,40 +82,40 @@ app.get('api/reddit', (req, res) => {
 })
 
 
-
+// web scraping here
 app.get('/api/news', (req, res) => {
     const url = 'http://cnn.com';
 
     request.get(url, (err, response, html) => {
         if(err) throw err;
 
-    const news = [];
-    const $ = cheerio.load(html);
+        const news = [];
+        const $ = cheerio.load(html);
 
 
-    const $bannerText = $('.banner-text');
+        const $bannerText = $('.banner-text');
 
-    // this is called caching the selector. very important. set the $bannerText variable above
-    news.push({
-        title: $bannerText.text(),
-        url: $bannerText.closest('a').attr('href')
-    });
-
-    // news.push({
-    //     title: $('.banner-text').text(),
-    //     url: $('.banner-text').closest('a').attr('href')
-    // });
-
-
-    // eq makes it into a jquery object, so we can use .text and .find
-    _.range(1, 12).forEach(i => {
+        // this is called caching the selector. very important. set the $bannerText variable above
         news.push({
-            title: $('.cd__headline').eq(i).text(),
-            url: $('.cd__headline').eq(i).find('a').attr('href')
-        })
-    });
+            title: $bannerText.text(),
+            url: $bannerText.closest('a').attr('href')
+        });
 
-    res.send(news);
+        // news.push({
+        //     title: $('.banner-text').text(),
+        //     url: $('.banner-text').closest('a').attr('href')
+        // });
+
+
+        // eq makes it into a jquery object, so we can use .text and .find
+        _.range(1, 12).forEach(i => {
+            news.push({
+                title: $('.cd__headline').eq(i).text(),
+                url: $('.cd__headline').eq(i).find('a').attr('href')
+            })
+        });
+
+        res.send(news);
 
     });
 });
@@ -187,6 +191,8 @@ app.get('/sendphoto', (req, res) => {
 // so single(fieldname)
 // single could be .array or .fields or .any
 // .post comes from method="post" in the jade file
+
+// this allows you to upload a file to imgur, and deletes it from tmp at the same time
 app.post('/sendphoto', upload.single('image'), (req, res) => {
     console.log(req.body, req.file);
     console.log('path heeeeeeeer', req.file.path);
