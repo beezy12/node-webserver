@@ -473,8 +473,8 @@ app.get('/cal/:calMonth/:calYear', (req, res) => {
 
   let output = calMaker.outputCal(year, month, 1);
 
-  var butt = calMaker.displayHeader(month, year) + output;
-  res.send(`<pre>${butt}</pre>`);
+  var calOutput = calMaker.displayHeader(month, year) + output;
+  res.send(`<pre>${calOutput}</pre>`);
 
 });
 
@@ -507,7 +507,7 @@ app.all('*', (req, res) => {
 
 //scotts code
 
-mongoose.connect(MONGODB_URL);
+//mongoose.connect(MONGODB_URL);
 
 // // const Contact = mongoose.model('contacts', mongoose.Schema({
 // //   name: String,
@@ -545,7 +545,7 @@ module.exports = app;
 
 
 //   app.listen(PORT, () => {
-//       console.log(`node.js server started you buttmunch. listening on port ${PORT}`);
+//       console.log(`node.js server started. listening on port ${PORT}`);
 //   });
 // });
 
@@ -905,7 +905,7 @@ module.exports = app;
 //     console.log(req.method, req.url);
 
 //     if(req.url === '/hello') {
-//     	const msg = "<h1>you say goodbye..butt butt butt</h3>";
+//     	const msg = "<h1>you say goodbye..</h3>";
 
 //     	res.writeHead(200, {
 //     		'Content-Type': 'text/html'
@@ -934,7 +934,7 @@ module.exports = app;
 
 
 // }).listen(PORT, () => {
-//     console.log(`node.js server started you buttmunch. listening on port ${PORT}`);
+//     console.log(`node.js server started and is listening on port ${PORT}`);
 // });
 
 

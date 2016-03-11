@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 
-	console.log('hi there butt');
+	console.log('hi there');
 
 
 	$hi = $('.hi');
