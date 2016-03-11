@@ -16,6 +16,7 @@ $(document).ready(function() {
 		$intro.fadeIn();
 	}, 2000);
 
+
 	$deal = $('.deal');
 	$deal.hide();
 	var timeOut = setTimeout(function() {
