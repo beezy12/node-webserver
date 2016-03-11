@@ -3,7 +3,6 @@ $(document).ready(function() {
 
 
 
-
 	$hi = $('.hi');
 	var timeOut = setTimeout(function() {
 		// $hi.fadeOut();
