@@ -187,7 +187,7 @@ app.all('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`node.js server started you buttmunch. listening on port ${PORT}`);
+    console.log(`node.js server started and listening on port ${PORT}`);
 });
 
 
