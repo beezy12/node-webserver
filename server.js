@@ -182,7 +182,7 @@ app.post('/contact', (req, res) => {
     res.send(`<h1>preeeeeeeeesh ${name}</h1>`);
 });
 
-
+// renders the sendphoto jade view when directed to this address
 app.get('/sendphoto', (req, res) => {
     res.render('sendphoto')
 });
@@ -273,8 +273,8 @@ app.get('/cal/:calMonth/:calYear', (req, res) => {
 
   let output = calMaker.outputCal(year, month, 1);
 
-  var butt = calMaker.displayHeader(month, year) + output;
-  res.send(`<pre>${butt}</pre>`);
+  var calOutput = calMaker.displayHeader(month, year) + output;
+  res.send(`<pre>${calOutput}</pre>`);
 
 });
 
@@ -370,11 +370,11 @@ app.listen(PORT, () => {
 // // 	});
 
 // // 	res.end('<h1>the end is nigh</h1>');
-// // 	//res.end('<!DOCTYPE><html><head></head><body><h1>butt</h1></body></html>');
+// // 	//res.end('<!DOCTYPE><html><head></head><body><h1>yo hey</h1></body></html>');
 // // 	// this could be a json, or html
 
 // // }).listen(3000, () => {
-// // 	console.log('node.js server started you buttmunch. listening on port 3000');
+// // 	console.log('node.js server started you and listening on port 3000');
 // // });
 
 
@@ -415,7 +415,7 @@ app.listen(PORT, () => {
 
 
 // }).listen(PORT, () => {
-//     console.log(`node.js server started you buttmunch. listening on port ${PORT}`);
+//     console.log(`node.js server started and listening on port ${PORT}`);
 // });
 
 
@@ -430,7 +430,7 @@ app.listen(PORT, () => {
 //     console.log(req.method, req.url);
 
 //     if(req.url === '/hello') {
-//     	const msg = "<h1>you say goodbye..butt butt butt</h3>";
+//     	const msg = "<h1>you say goodbye....</h3>";
 
 //     	res.writeHead(200, {
 //     		'Content-Type': 'text/html'
@@ -459,7 +459,7 @@ app.listen(PORT, () => {
 
 
 // }).listen(PORT, () => {
-//     console.log(`node.js server started you buttmunch. listening on port ${PORT}`);
+//     console.log(`node.js server started and listening on port ${PORT}`);
 // });
 
 
